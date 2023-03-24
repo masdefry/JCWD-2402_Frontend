@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Css</title>
+    <style>
+        h1{
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./external.css" />
+</head>
+<body>
+    <h1 style="color: green;">
+        Purwadhika
+    </h1>
+    <h1>
+        Digital
+    </h1>
+    <h1 id="sch">
+        School
+    </h1>
+    <h1 class="bsd bsdbg">
+        Bsd
+    </h1>
+
+    <!-- Specificity CSS -->
+    <!-- 
+        Spesificity Point: 
+        !Important > Inline Styling > Id    > Class > Tag 
+        10000      > 1000           > 100   > 10    > 1
+     -->
+     <h2 class="cTest01" id="iTest01" style="color: salmon;">
+        Test-01
+     </h2>
+     <div class="cWrapper" id="iWrapper">
+        <div class="cContent" id="iContent">
+            <h1 class="cHeading">
+                Test-02
+            </h1>
+        </div>
+     </div>
+</body>
+</html>
