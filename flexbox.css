@@ -13,3 +13,51 @@
     background-color: green;
     flex: 2;
 }
+
+
+
+
+/* Exercise */
+.parentTop{
+    display: flex;
+    gap: 10px;
+}
+
+.parentTop .childTopL:nth-child(1){
+    border: 1px solid salmon;
+    flex: 3;
+}
+
+.parentTop .childTopR{
+    flex: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.childTopR div{
+    border: 1px solid greenyellow;
+}
+
+.parentBottom{
+    display: flex;
+    gap: 10px;
+}
+
+.parentBottom div{
+    flex: 1;
+    border: 1px solid black;
+}
+
+
+
+.parentWrap{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.parentWrap div{
+    background-color: blue;
+    flex: 20%;
+}
