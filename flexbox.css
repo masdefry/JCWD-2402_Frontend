@@ -1,0 +1,15 @@
+.wrapper{
+    background-color: gray;
+    height: 500px;
+    display: flex;
+}
+
+.wrapper div{
+    flex: 1;
+    background-color: red;
+}
+
+.wrapper div:nth-child(even){
+    background-color: green;
+    flex: 2;
+}
