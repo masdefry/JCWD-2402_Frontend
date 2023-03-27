@@ -30,3 +30,34 @@
 .container div:nth-child(even){
     background-color: yellow;
 }
+
+
+
+
+
+
+
+.parent{
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    margin-top: 100px;
+    margin-bottom: 300px;
+}
+
+.parent div{
+    background-color: cadetblue;
+}
+
+.parent div:nth-child(even){
+    background-color: chocolate;
+}
+
+.parent div:nth-child(1){
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.parent div:nth-child(2){
+    grid-column: 4/10;
+}
