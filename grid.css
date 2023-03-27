@@ -1,0 +1,32 @@
+.wrapper{
+    display: grid;
+    height: 550px;
+    grid-template-columns: 2fr 1fr 2fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px 20px;
+}
+
+.wrapper div{
+    background-color: salmon;
+    color: white; 
+}
+
+.wrapper div:nth-child(even){
+    background-color: brown;
+}
+
+.container{
+    background-color: grey;
+    display: grid;
+    height: 550px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.container div{
+    background-color: blue;
+    color: white; 
+}
+
+.container div:nth-child(even){
+    background-color: yellow;
+}
