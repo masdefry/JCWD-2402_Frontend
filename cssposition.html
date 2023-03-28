@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Css Position</title>
+    <link rel="stylesheet" href="cssposition.css">
+</head>
+<body>
+    <!-- 
+        1. Static
+            - By default, semua element html memiliki position static
+
+        2. Relative
+            - Elemen akan berpindah terhadap posisi semula
+            - Ketika elemen relative berpindah, 
+              maka akan meninggalkan ruang kosong
+            
+        3. Absolute
+            - Elemen akan berpindah terhadap posisi parent nya 
+              yg memiliki position non-static
+            - Ketika elemen absolute berpindah, 
+              maka ruang dari elemen absolute akan dianggap tidak ada 
+              oleh elemen lain
+        
+        4. Fixed
+            - Elemen akan berpindah terhadap viewport
+        
+        5. Sticky
+    -->
+    <div class="parent">
+        <div class="box01">
+            Box-01 
+        </div>
+        <div class="box02">
+            Box-02
+        </div>
+        <div class="box03">
+            Box-03
+        </div>
+    </div>
+</body>
+</html>

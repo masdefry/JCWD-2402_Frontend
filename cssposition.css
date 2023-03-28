@@ -1,0 +1,23 @@
+div{
+    width: 100px;
+    height: 100px;
+}
+
+.parent{
+    border: 1px solid black;
+    height: 5000px;
+}
+
+.box01{
+    background-color: salmon;
+}
+
+.box02{
+    background-color: blueviolet;
+    position: sticky;
+    top: 0px;
+}
+
+.box03{
+    background-color: yellowgreen;
+}
