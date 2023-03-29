@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:ital,wght@0,200;1,100&family=Roboto:wght@100&family=Sono:wght@300&family=Ubuntu:ital,wght@0,300;1,300&display=swap');
+
+body{
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(243, 243, 243);
+}
+
+/* Font Size */
+.portfolio-fs-16{
+    font-size: 16px;
+}
+
+.portfolio-fs-18{
+    font-size: 18px;
+}
+
+.portfolio-fs-22{
+    font-size: 22px;
+}
+
+.portfolio-fs-26{
+    font-size: 26px;
+}
+
+.portfolio-fs-42{
+    font-size: 42px;
+}
+
+.portfolio-fs-100{
+    font-size: 100px;
+}
+
+/* Font Weight */
+.portfolio-fw-1000{
+    font-weight: 1000;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 100px;
+}
+
+.navbar .nLeft{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+} 
+
+.navbar .nRight{
+    display: flex;
+    gap: 10px;
+}
+
+.jumbotron{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 300px;
+}
+
+.jumbotron .jLeft{
+    flex: 1;
+}
+
+.jumbotron .jRight{
+    flex: 1;
+    padding-left: 50px;
+}
+
+.resume{
+    display: flex;
+    justify-content: space-between;
+}
+
+.resume .rLeft{
+    flex: 1;
+}
+
+.resume .rRight{
+    flex: 1;
+}
+
+.resume .rRight .rCard{
+    display: flex;
+}
+
