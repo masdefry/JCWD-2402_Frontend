@@ -1,17 +1,19 @@
 import FlashSale from "../../Components/FlashSale/FlashSale";
 
+import ComponentTodo from './ComponentTodo';
+
 export default function LandingPage(){
 
-    const data = [
-        { name: 'Sepatu', price: 100000, discount: 10, stock: 100, image: '...' },
-        { name: 'Kaos', price: 100000, discount: 10, stock: 100, image: '...' }
-    ]
-
-    // const todo = [
-    //     {todo: 'Makan'},
-    //     {todo: 'Main'},
-    //     {todo: 'Belajar'}
+    // const data = [
+    //     { name: 'Sepatu', price: 100000, discount: 10, stock: 100, image: '...' },
+    //     { name: 'Kaos', price: 100000, discount: 10, stock: 100, image: '...' }
     // ]
+
+    const todo = [
+        {todo: 'Makan', date:'Besok'},
+        {todo: 'Main', date:'Besok'},
+        {todo: 'Belajar', date:'Besok'}
+    ]
 
     return(
         <div>
@@ -21,17 +23,9 @@ export default function LandingPage(){
             </div>
 
             {/* Section-2 Flash Sale */}
-            <FlashSale data={data} />
+            {/* <FlashSale data={data} /> */}
 
-            {/* {
-                todo.map((value, index) => {
-                    return(
-                        <div> 
-                            {value.todo}
-                        </div>
-                    )
-                })
-            } */}
+            <ComponentTodo data={todo} />
         </div>
     )
 }
