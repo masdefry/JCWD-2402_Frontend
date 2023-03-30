@@ -1,22 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-import Profile from './Pages/Profile/profile';
-import Transaction from './Pages/Transaction/transaction';
-
 import {Routes, Route} from 'react-router-dom';
-import Navbar from './Components/navbar';
+
+// import Test from './Pages/Test/Test.jsx';
+import LandingPage from './Pages/LandingPage/LandingPage';
+import Navbar from './Components/Navbar/Navbar';
+import Test from './Pages/Test/Test';
+import State from './Pages/State/State';
+import Funct from './Pages/Funct/Funct';
 
 function App() {
   return (
-    <div>
-     <Navbar />
+    <>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Profile />} />
-        <Route path='/transaction' element={<Transaction />} />
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/state' element={<State />} />
+        <Route path='/test' element={<Test />} />
+        <Route path='/funct' element={<Funct />} />
       </Routes>
-      Footer
-    </div>
+      
+    </>
   );
 }
 
