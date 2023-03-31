@@ -1,117 +1,30 @@
 import {useState, useEffect, useRef} from 'react';
-import Card from '../../Components/FlashSale/Card';
+import ComponentInput from './ComponentInput';
 
 export default function Funct(){
 
-    const [number, setNumber] = useState(1)
-    const [alpha, setAlpha] = useState('abc')
+    // useState
     const [data, setData] = useState([])
-    const [isOpen, setIsOpen] = useState(false)
 
-    const todo = useRef()
-    const date = useRef()
+    const onSubmit = (todo, date) => {
+        // 2. Validasi inputan
+        if(!todo || !date) return alert('Data Must be Filled!')
 
-    const onChangeNumber = (operator) => {
-        if(operator === '+'){
-            if(number !== 10) setNumber(number + 1)
-        }else{
-            
-        if(number !== 0) setNumber(number - 1)
-        }
-    }
-
-    const onChangeAlpha = () => {
-        setAlpha('xyz')
-    }
-
-    const onSubmit = () => {
-
-        if(!todo.current.value || !date.current.value) return alert('Data Must be Filled')
-
+        // 3. Simpan kedalam state
+        // setData((prev) => 
+        //     [
+        //         ...prev,
+        //         {todo, date}
+        //     ]
+        // )
         const currentData = [...data]
-
-        const createData = { todo: todo.current.value, date: date.current.value }
-        currentData.push(createData)
+        currentData.push({todo, date})
         setData(currentData)
-    }
+    }   
 
-    const onDeleteData = (idx) => {
-        const currentData = [...data]
-        currentData.splice(idx, 1)
-        setData(currentData)
-    }
-
-    // === componentDidMount
-    useEffect(() => {
-        console.log('Component Did Mount Running')
-    }, [])
-
-    // === componentDidUpdate
-    useEffect(() => {
-        console.log('Component Did Update Running')
-    }, [number, alpha])
-
-    // === componentWillUnmount
-    useEffect(() => {
-        return () => {
-            console.log('Component Did Update Running')
-        }
-    }, [])
-    
     return(
         <div style={{padding: '0px 50px'}}>
-            {/* <h1>
-                Pages Funct
-            </h1>
-
-            <button onClick={() => onChangeNumber('-')}>
-                -
-            </button>
-            <h3>
-                {number}
-            </h3>
-            <button onClick={() => onChangeNumber('+')}>
-                +
-            </button>
-
-            <button onClick={onChangeAlpha}>
-                Merubah State Alpha
-            </button> */}
-
-            <h1>
-                todolist
-            </h1>
-
-            <div style={{marginTop: '15px'}}>
-                <button onClick={() => setIsOpen(!isOpen)}>
-                    Create Todo
-                </button>
-            </div>
-            {
-                isOpen?
-                <>
-                    <div style={{marginTop: '30px'}}>
-                Todo: 
-            </div>
-            <div>
-                <input ref={todo} type='text' placeholder='Input your activity' />
-            </div>
-            <div style={{marginTop: '10px'}}>
-                Date: 
-            </div>
-            <div>
-                <input ref={date} type='date' placeholder='Input your activity' style={{width: '15.9%'}} />
-            </div>
-            <div style={{marginTop: '15px'}}>
-                <button onClick={onSubmit}>
-                    Submit
-                </button>
-            </div>
-                </>
-            :
-            null
-            }
-
+            <ComponentInput myFunction={onSubmit} />
 
 
             <table style={{border: '1px solid gray', marginTop: '50px', width: '300px'}}>
@@ -140,10 +53,10 @@ export default function Funct(){
                                         {value.date}
                                     </td>
                                     <td>
-                                        <button>
+                                        <button onClick={() => onSubmit()}>
                                             Edit
                                         </button>
-                                        <button onClick={() => onDeleteData(index)} style={{marginLeft: '10px'}}>
+                                        <button>
                                             Delete
                                         </button>
                                     </td>
