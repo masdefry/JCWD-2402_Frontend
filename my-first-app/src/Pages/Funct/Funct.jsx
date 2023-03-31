@@ -6,6 +6,7 @@ export default function Funct(){
     const [number, setNumber] = useState(1)
     const [alpha, setAlpha] = useState('abc')
     const [data, setData] = useState([])
+    const [isOpen, setIsOpen] = useState(false)
 
     const todo = useRef()
     const date = useRef()
@@ -81,7 +82,15 @@ export default function Funct(){
                 todolist
             </h1>
 
-            <div>
+            <div style={{marginTop: '15px'}}>
+                <button onClick={() => setIsOpen(!isOpen)}>
+                    Create Todo
+                </button>
+            </div>
+            {
+                isOpen?
+                <>
+                    <div style={{marginTop: '30px'}}>
                 Todo: 
             </div>
             <div>
@@ -98,6 +107,10 @@ export default function Funct(){
                     Submit
                 </button>
             </div>
+                </>
+            :
+            null
+            }
 
 
 
