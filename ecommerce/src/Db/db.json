@@ -39,6 +39,47 @@
       "email": "ryan@gmail.com",
       "password": "abc12345",
       "id": 5
+    },
+    {
+      "firstName": "Ryan",
+      "lastName": "Nayr",
+      "birthdate": "1990-10-10",
+      "email": "ryan@gmail.com",
+      "password": "abc12345",
+      "id": 6
+    }
+  ],
+
+  "category": [
+    {
+      "id": 1, 
+      "category": "Sepatu"
+    },
+    {
+      "id": 2, 
+      "category": "Pakaian"
+    },
+    {
+      "id": 3, 
+      "category": "Accecories"
+    }
+  ], 
+
+  "products": [
+    {
+      "id": 1, 
+      "name": "Sepatu ...",
+      "price": 0, 
+      "size": [40, 41, 42, 43, 44, 45],
+      "stock": 100,
+      "color": "Black/White/Beige",
+      "discount": 10,
+      "images": [
+        "Url1",
+        "Url2",
+        "Url3"
+      ],
+      "category_id": 3
     }
   ]
 }
