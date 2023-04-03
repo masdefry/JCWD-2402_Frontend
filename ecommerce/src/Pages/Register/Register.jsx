@@ -8,8 +8,6 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 
 function Register() {
 
-  const [isShowPass, setIsShowPass] = useState(false)
-
   const _firstName = useRef()
   const _lastName = useRef()
   const _day = useRef()
@@ -29,10 +27,6 @@ function Register() {
       const email = _email.current.value
       const password = _password.current.value
       const confirmPassword = _confirmPassword.current.value
-
-      if(!firstName || !lastName || !day || !month || !year || !email || !password) return toast.error(`Fill All Data!`)
-      if(!email.includes('@')) return toast.error(`Email Not Valid!`)
-      if(password != confirmPassword) return toast.error(`Password Doesnt Mathc!`)
 
       let response = await axios.post('http://localhost:5000/users', {firstName, lastName, birthdate: `${year}-${month}-${day}`, email, password})
       _firstName.current.value = ''
@@ -83,12 +77,7 @@ function Register() {
             </h1>
             <div className='flex items-end border border-gray-600 px-3 pb-3'>
               <input type={isShowPass? 'text' : 'password'} ref={_password} placeholder='Kata Sandi' className='w-full mt-3 outline-none' />
-              {
-                isShowPass === false? 
-                <FiEye onClick={() => setIsShowPass(!isShowPass)} />
-                :
-                <FiEyeOff onClick={() => setIsShowPass(!isShowPass)} />
-              }
+        
             </div>
             <input type='password' ref={_confirmPassword} placeholder='Konfirmasi Kata Sandi' className='border border-gray-600 w-full mt-3 px-3 py-3 outline-none' />
           </div>
