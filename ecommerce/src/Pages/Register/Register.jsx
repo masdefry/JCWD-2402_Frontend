@@ -15,6 +15,7 @@ function Register() {
   const _day = useRef()
   const _month = useRef()
   const _year = useRef()
+  const _username = useRef()
   const _email = useRef()
   const _password = useRef()
   const _confirmPassword = useRef()
@@ -26,21 +27,26 @@ function Register() {
       const day = _day.current.value
       const month = _month.current.value
       const year = _year.current.value
+      const username = _username.current.value
       const email = _email.current.value
       const password = _password.current.value
-      const confirmPassword = _confirmPassword.current.value
+      const confirmPassword = _confirmPassword.current.value 
 
-      if(!firstName || !lastName || !day || !month || !year || !email || !password) return toast.error(`Fill All Data!`)
-      if(!email.includes('@')) return toast.error(`Email Not Valid!`)
-      if(password != confirmPassword) return toast.error(`Password Doesnt Mathc!`)
-
-      let response = await axios.post('http://localhost:5000/users', {firstName, lastName, birthdate: `${year}-${month}-${day}`, email, password})
+      if(!firstName || !lastName || !day || !month || !year || !email || !password || !confirmPassword) throw {message: 'Data Incompleted!'}
+      if(password !== confirmPassword) throw {message: 'Password Doesnt Match!'}
+      if(!email.includes('@')) throw {message: 'Email Invalid!'}
+      let findEmail = await axios.get(`http://localhost:5000/users?email=${email}`)
+      let findUsername = await axios.get(`http://localhost:5000/users?username=${username}`)
+      
+      if(findEmail.data.length !== 0) throw {message: 'Email Already Register!'}
+      if(findUsername.data.length !== 0) throw {message: 'Username Already Exist!'}
+      let response = await axios.post('http://localhost:5000/users', {firstName, lastName, birthdate: `${year}-${month}-${day}`, username, email, password})
       _firstName.current.value = ''
       _lastName.current.value = ''
       _day.current.value = ''
       toast.success('Register Success!')
-    } catch (error) {
-      toast.error(`Register Failed!`)
+    } catch (error) { // error: {message: 'Data Incompleted!'}
+      toast.error(error.message)
     }
   }
  
@@ -73,6 +79,12 @@ function Register() {
           </div>
           <div className='pt-7'>
             <h1 className='text-xl font-bold'> 
+              Username
+            </h1>
+            <input type='text' ref={_username} placeholder='Email' className='border border-gray-600 w-full mt-3 px-3 py-3 outline-none' />
+          </div>
+          <div className='pt-7'>
+            <h1 className='text-xl font-bold'> 
               Email
             </h1>
             <input type='text' ref={_email} placeholder='Email' className='border border-gray-600 w-full mt-3 px-3 py-3 outline-none' />
@@ -81,13 +93,13 @@ function Register() {
             <h1 className='text-xl font-bold'> 
               Kata Sandi
             </h1>
-            <div className='flex items-end border border-gray-600 px-3 pb-3'>
-              <input type={isShowPass? 'text' : 'password'} ref={_password} placeholder='Kata Sandi' className='w-full mt-3 outline-none' />
+            <div className='flex border border-gray-600 px-3 pb-3'>
+              <input type={isShowPass? 'text':'password'} ref={_password} placeholder='Kata Sandi' className='w-full mt-3 outline-none' />
               {
-                isShowPass === false? 
-                <FiEye onClick={() => setIsShowPass(!isShowPass)} />
+                isShowPass?
+                <FiEye onClick={() => setIsShowPass(!isShowPass)} className='mt-4' />
                 :
-                <FiEyeOff onClick={() => setIsShowPass(!isShowPass)} />
+                <FiEyeOff onClick={() => setIsShowPass(!isShowPass)} className='mt-4' />
               }
             </div>
             <input type='password' ref={_confirmPassword} placeholder='Konfirmasi Kata Sandi' className='border border-gray-600 w-full mt-3 px-3 py-3 outline-none' />

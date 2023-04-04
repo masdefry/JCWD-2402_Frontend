@@ -2,7 +2,7 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { SlBag } from "react-icons/sl";
 
-function Navbar() {
+function Navbar(props) {
   return (
     // Section1: Navbar
     <div className='px-10 border-b'>
@@ -17,7 +17,14 @@ function Navbar() {
           newsletter
         </div>
         <div>
-          masuk
+          {
+            props.username?
+              <h1 className='font-bold'>
+                Hi, {props.username}
+              </h1>
+            :
+              'masuk'
+          }
         </div>
       </div>
       <div className='flex justify-between py-3'>

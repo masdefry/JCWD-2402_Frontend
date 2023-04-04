@@ -2,75 +2,50 @@
   "users": [
     {
       "firstName": "Ryan",
-      "lastName": "Nayr",
-      "birthdate": "2010-10-10",
+      "lastName": "Defryan",
+      "birthdate": "1990-10-10",
+      "username": "ryandefryan",
       "email": "ryan@gmail.com",
-      "password": "abc12345",
+      "password": "123",
       "id": 1
     },
     {
       "firstName": "Ryan",
-      "lastName": "Nayr",
-      "birthdate": "2010-10-10",
-      "email": "ryan@gmail.com",
-      "password": "abc12345",
+      "lastName": "Defryan",
+      "birthdate": "1990-10-10",
+      "username": "ryandefryan01",
+      "email": "ryan01@gmail.com",
+      "password": "123",
       "id": 2
-    },
-    {
-      "firstName": "Ryan",
-      "lastName": "Nayr",
-      "birthdate": "1999-12-20",
-      "email": "ryan@gmail.com",
-      "password": "abc13234",
-      "id": 3
-    },
-    {
-      "firstName": "Ryan",
-      "lastName": "Nayr",
-      "birthdate": "1999-12-20",
-      "email": "ryan@gmail.com",
-      "password": "abc13234",
-      "id": 4
-    },
-    {
-      "firstName": "Defry",
-      "lastName": "An",
-      "birthdate": "1990-10-10",
-      "email": "ryan@gmail.com",
-      "password": "abc12345",
-      "id": 5
-    },
-    {
-      "firstName": "Ryan",
-      "lastName": "Nayr",
-      "birthdate": "1990-10-10",
-      "email": "ryan@gmail.com",
-      "password": "abc12345",
-      "id": 6
     }
   ],
-
   "category": [
     {
-      "id": 1, 
+      "id": 1,
       "category": "Sepatu"
     },
     {
-      "id": 2, 
+      "id": 2,
       "category": "Pakaian"
     },
     {
-      "id": 3, 
+      "id": 3,
       "category": "Accecories"
     }
-  ], 
-
+  ],
   "products": [
     {
-      "id": 1, 
+      "id": 1,
       "name": "Sepatu ...",
-      "price": 0, 
-      "size": [40, 41, 42, 43, 44, 45],
+      "price": 0,
+      "size": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
       "stock": 100,
       "color": "Black/White/Beige",
       "discount": 10,
