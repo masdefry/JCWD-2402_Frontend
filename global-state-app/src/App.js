@@ -1,7 +1,7 @@
 import {increment, decrement} from './features/counter/counterSlice';
-import {addTodo} from './features/todo/todoSlice';
+import {addTodo, deleteTodo, getTodoAsync} from './features/todo/todoSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 
 function App() {
   const count = useSelector((state) => state.bebas.value)
@@ -9,6 +9,10 @@ function App() {
   const dispatch = useDispatch()
 
   const _input = useRef()
+
+  useEffect(() => {
+    dispatch(getTodoAsync())
+  }, [])
 
   return (
     <div style={{marginLeft: '300px'}}>
@@ -26,9 +30,19 @@ function App() {
         Todo List 
       </h1>
       <input ref={_input} type='text' />
-      <button onClick={() => dispatch(addTodo('abc'))}>
+      <button onClick={() => dispatch(addTodo(_input.current.value))}>
         Submit Todo
       </button>
+      {console.log(todo)}
+      {
+        todo.map((value, index) => {
+          return(
+            <div>
+              {value.todo} <span onClick={() => dispatch(deleteTodo({index, value}))} style={{color: 'blue'}}>Delete</span>
+            </div>
+          )
+        })
+      }
     </div>
   );
 }
