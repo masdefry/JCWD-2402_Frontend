@@ -12,6 +12,7 @@ export const counterSlice = createSlice({
             initialState.value += 1
         },
         decrement: (initialState) => {
+            console.log('Ini Decrement')
             initialState.value -= 1
         }
     }
