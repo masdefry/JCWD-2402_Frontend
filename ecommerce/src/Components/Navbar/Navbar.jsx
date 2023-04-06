@@ -2,7 +2,10 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { SlBag } from "react-icons/sl";
 
+import { useSelector } from "react-redux";
+
 function Navbar(props) {
+  const userReducer = useSelector((state) => state.user.username)
   return (
     // Section1: Navbar
     <div className='px-10 border-b'>
@@ -18,9 +21,9 @@ function Navbar(props) {
         </div>
         <div>
           {
-            props.username?
+            userReducer?
               <h1 className='font-bold'>
-                Hi, {props.username}
+                Hi, {userReducer}
               </h1>
             :
               'masuk'

@@ -1,10 +1,15 @@
 import {useRef, useState} from 'react';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { redirect, Link } from 'react-router-dom';
 
 import { BsArrowRight } from "react-icons/bs";
 import { HiOutlineCheck } from "react-icons/hi";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+
+// Import Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAsync } from '../../Redux/Features/userSlice';
 
 function Login(props) {
 
@@ -13,8 +18,12 @@ function Login(props) {
   const _usernameOrEmail = useRef()
   const _password = useRef()
 
+  const dispatch = useDispatch()
+  const userReducer = useSelector((state) => state.user.username)
+
   return (
     <>
+    {console.log(userReducer)}
     <Toaster />
       <div className='flex gap-7 px-24'>
         <div className='flex-1'>
@@ -44,7 +53,7 @@ function Login(props) {
             </div>
           </div>
           <div className='py-7'>
-            <button onClick={() => props.loginFunction(_usernameOrEmail, _password)}  className='flex items-center gap-3 border border-gray-900'>
+            <button onClick={() => dispatch(loginAsync(_usernameOrEmail.current.value, _password.current.value))}  className='flex items-center gap-3 border border-gray-900'>
                 <div className='flex gap-3 items-center bg-gray-900 text-white px-7 py-3 relative top-[-3px] left-[-3px]'>
                     LOGIN <BsArrowRight />
                 </div>
@@ -69,7 +78,9 @@ function Login(props) {
             <div className='py-7'>
                 <button  className='flex items-center gap-3 border border-gray-900'>
                     <div className='flex gap-3 items-center bg-gray-900 text-white px-7 py-3 relative top-[-3px] left-[-3px]'>
+                        <Link to='/register'>
                         REGISTRASI <BsArrowRight />
+                        </Link>
                     </div>
                 </button>
             </div>

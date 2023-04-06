@@ -6,6 +6,8 @@ import { BsArrowRight } from "react-icons/bs";
 import { HiOutlineCheck } from "react-icons/hi";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
+import { Link } from 'react-router-dom';
+
 function Register() {
 
   const [isShowPass, setIsShowPass] = useState(false)
@@ -127,6 +129,9 @@ function Register() {
                 <li className='flex gap-1 items-center'><HiOutlineCheck /> Kelola Wishlist</li>
               </ul>
             </p>
+            <Link to='/login'>
+              Goto Login
+            </Link>
           </div>
         </div>
       </div>
