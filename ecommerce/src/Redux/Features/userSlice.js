@@ -27,10 +27,29 @@ export const loginAsync = (_usernameOrEmail, _password) => async(dispatch) => {
 
         if(response.data.length === 0) throw {message: 'Account Not Found!'}
         
-        dispatch(setUsername(response.data[0].username))
         toast.success('Login Success!')
+        
+        localStorage.setItem('id', response.data[0].id)
+
+        setTimeout(() => {
+            dispatch(setUsername(response.data[0].username))
+        }, 3000)
     } catch (error) {
         toast.error(error.message)
+    }
+}
+
+export const keepLoginAsync = () => async(dispatch) => {
+    try {
+        let id = localStorage.getItem('id')
+
+        if(id){
+            let response = await axios.get(`http://localhost:5000/users/${id}`)
+            dispatch(setUsername(response.data.username))
+        }
+        
+    } catch (error) {
+        
     }
 }
 

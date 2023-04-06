@@ -1,7 +1,7 @@
 import {useRef, useState} from 'react';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { redirect, Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { BsArrowRight } from "react-icons/bs";
 import { HiOutlineCheck } from "react-icons/hi";
@@ -21,10 +21,12 @@ function Login(props) {
   const dispatch = useDispatch()
   const userReducer = useSelector((state) => state.user.username)
 
+  if(userReducer) return <Navigate to='/' />
+
   return (
     <>
     {console.log(userReducer)}
-    <Toaster />
+    {userReducer? null : <Toaster />}
       <div className='flex gap-7 px-24'>
         <div className='flex-1'>
           <div>
@@ -78,9 +80,7 @@ function Login(props) {
             <div className='py-7'>
                 <button  className='flex items-center gap-3 border border-gray-900'>
                     <div className='flex gap-3 items-center bg-gray-900 text-white px-7 py-3 relative top-[-3px] left-[-3px]'>
-                        <Link to='/register'>
                         REGISTRASI <BsArrowRight />
-                        </Link>
                     </div>
                 </button>
             </div>

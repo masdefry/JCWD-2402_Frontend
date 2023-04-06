@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 function Register() {
 
   const [isShowPass, setIsShowPass] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(false)
 
   const _firstName = useRef()
   const _lastName = useRef()
@@ -37,6 +38,7 @@ function Register() {
       if(!firstName || !lastName || !day || !month || !year || !email || !password || !confirmPassword) throw {message: 'Data Incompleted!'}
       if(password !== confirmPassword) throw {message: 'Password Doesnt Match!'}
       if(!email.includes('@')) throw {message: 'Email Invalid!'}
+      setIsDisabled(true)
       let findEmail = await axios.get(`http://localhost:5000/users?email=${email}`)
       let findUsername = await axios.get(`http://localhost:5000/users?username=${username}`)
       
@@ -49,6 +51,8 @@ function Register() {
       toast.success('Register Success!')
     } catch (error) { // error: {message: 'Data Incompleted!'}
       toast.error(error.message)
+    }finally{
+      setIsDisabled(false)
     }
   }
  
@@ -107,7 +111,7 @@ function Register() {
             <input type='password' ref={_confirmPassword} placeholder='Konfirmasi Kata Sandi' className='border border-gray-600 w-full mt-3 px-3 py-3 outline-none' />
           </div>
           <div className='py-7'>
-            <button onClick={onRegister} className='flex items-center gap-3 border border-gray-900'>
+            <button onClick={onRegister} disabled={isDisabled} className='flex items-center gap-3 border border-gray-900'>
                 <div className='flex gap-3 items-center bg-gray-900 text-white px-7 py-3 relative top-[-3px] left-[-3px]'>
                     REGISTER <BsArrowRight />
                 </div>
