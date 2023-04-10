@@ -51,7 +51,7 @@ function Navbar(props) {
         <div className='flex flex-1 justify-end items-center gap-3'>
           <div>
             <div className='flex items-center border border-gray bg-gray-100 px-3 py-1'>
-              <input type='text' className='bg-gray-100 outline-none' />
+              <input type='text' className='bg-gray-100 border-none focus:ring-gray-100 focus:border-gray-100' />
               <AiOutlineSearch />
             </div>
           </div>

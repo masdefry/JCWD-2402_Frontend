@@ -6,20 +6,46 @@ import { IoChevronDownOutline } from 'react-icons/io5';
 import { BsPlusLg } from 'react-icons/bs';
 import { AiOutlineDown } from 'react-icons/ai';
 import CardComponent from './CardComponent';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
+
+// Flowbite
+import { Dropdown } from 'flowbite-react';
 
 // Url
 import UrlAPI from '../../Supports/Constants/URLAPI';
 
 export default function ProductList() {
 
+	// const _selectedCategory = useRef()
+
 	const [data, setData] = useState([])
+	const [categoryList, setCategoryList] = useState([])
 
 	const onGetData = async() => {
 		try {
-			const response = await axios.get(`${UrlAPI}/products`)
+			const response = await axios.get(`${UrlAPI}/products?_expand=category`)
 			console.log(response.data)
+			setData(response.data)
+		} catch (error) {
+			
+		}
+	}
+
+	const onGetCategory = async() => {
+		try {
+			const response = await axios.get(`${UrlAPI}/categories`)
+			console.log(response.data)
+			setCategoryList(response.data)
+		} catch (error) {
+			
+		}
+	}
+
+	const onFilterCategory = async(_selectedCategory) => {
+		try {
+			const response = await axios.get(`${UrlAPI}/products?_expand=category&categoryId=${_selectedCategory}`)
+			console.log(response)
 			setData(response.data)
 		} catch (error) {
 			
@@ -28,6 +54,7 @@ export default function ProductList() {
 
 	useEffect(() => {
 		onGetData()
+		onGetCategory()
 	}, [])
 
 	return (
@@ -100,11 +127,24 @@ export default function ProductList() {
 							</article>
 							<div class='menu-overlay-container mt-5 flex justify-between border-[1px] border-black'>
 								<div className='menu-overlay-wrapper-1 flex h-[55px]'>
-									<div className='title-wrapper flex items-center mx-2 my-2 border-[1px] border-white hover:border-black cursor-pointer'>
-										<div className='title flex items-center border-box gap-1 py-2 px-3'>
-											<span className='text-[13px]'>HARGA</span>
-											<IoChevronDownOutline className='text-[10px]' />
-										</div>
+									<div className='title-wrapper flex-column items-center mx-2 my-2 border-[1px] border-white hover:border-black cursor-pointer'>
+										<Dropdown
+											label="Category"
+											dismissOnClick={false}
+											class='bg-white border-[1px] border-black'
+											>
+											{
+												categoryList.map((value, index) => {
+													return(
+														<Dropdown.Item 
+														onClick={() => onFilterCategory(value.id)}
+														key={index}>
+															{value.category}
+														</Dropdown.Item>
+													)
+												})
+											}
+										</Dropdown>
 									</div>
 									<div className='title-wrapper flex items-center mx-2 my-2 border-[1px] border-white hover:border-black cursor-pointer'>
 										<div className='title flex items-center border-box gap-1 py-2 px-3'>

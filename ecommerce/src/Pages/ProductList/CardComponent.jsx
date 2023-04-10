@@ -9,7 +9,7 @@ export default function ProductCard(props) {
 						<a href='#' className='product-card-content'>
 							<div className='top-container relative'>
 								<div className='product-picture'>
-									<img src={'https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/f/y/fy7757_2_footwear_photography_side20lateral20view_grey.jpg'} alt=''></img>
+									<img src={`${props.data?.type[0]?.images?.main_images}`} alt=''></img>
 								</div>
 								<div className='wishlist absolute top-4 right-4'>
 									<button className='wishlist-button'>
@@ -23,7 +23,7 @@ export default function ProductCard(props) {
 							<div className='bottom-container px-2 py-3'>
 								<div className='product-details'>
 									<div className='product-details-top text-xs text-gray-500 mb-3'>
-										<p>Pria Lifestyle</p>
+										<p>{props.data.category.category}</p>
 									</div>
 									<div className='product-details-main text-xs'>
 										<p className='product-name mb-1'>{props.data.name}</p>

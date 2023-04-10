@@ -1,7 +1,7 @@
 {
 	"users": [
 	],
-	"category": [
+	"categories": [
 		{
 			"id": 1,
 			"category": "Shoes"
@@ -76,7 +76,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 2,
@@ -140,7 +140,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 7,
@@ -196,7 +196,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 8,
@@ -218,7 +218,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 9,
@@ -248,7 +248,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 10,
@@ -296,7 +296,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 13,
@@ -338,7 +338,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 14,
@@ -401,7 +401,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 15,
@@ -465,7 +465,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 16,
@@ -523,7 +523,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 17,
@@ -552,7 +552,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 18,
@@ -622,7 +622,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 21,
@@ -645,7 +645,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 		{
 			"id": 22,
@@ -667,7 +667,7 @@
 					}
 				}
 			],
-			"category_id": 1
+			"categoryId": 1
 		},
 
 		{
@@ -710,7 +710,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 2,
@@ -787,7 +787,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 7,
@@ -809,7 +809,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 8,
@@ -861,7 +861,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 9,
@@ -886,7 +886,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 
 		{
@@ -928,7 +928,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 17,
@@ -954,7 +954,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 18,
@@ -977,7 +977,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 21,
@@ -999,7 +999,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 		{
 			"id": 22,
@@ -1021,7 +1021,7 @@
 					}
 				}
 			],
-			"category_id": 2
+			"categoryId": 2
 		},
 
 		{
@@ -1096,7 +1096,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 2,
@@ -1129,7 +1129,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 7,
@@ -1156,7 +1156,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 8,
@@ -1177,7 +1177,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 13,
@@ -1198,7 +1198,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 14,
@@ -1233,7 +1233,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 17,
@@ -1253,7 +1253,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 18,
@@ -1273,7 +1273,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 21,
@@ -1294,7 +1294,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		},
 		{
 			"id": 22,
@@ -1316,7 +1316,7 @@
 					}
 				}
 			],
-			"category_id": 3
+			"categoryId": 3
 		}
 	]
 }
