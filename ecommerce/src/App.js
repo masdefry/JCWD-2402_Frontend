@@ -6,6 +6,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
+import ProductList from './Pages/ProductList/ProductList';
 
 // Import Redux
 import { keepLoginAsync } from './Redux/Features/userSlice';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/products' element={<ProductList />} />
       </Routes>
     </>
   );
