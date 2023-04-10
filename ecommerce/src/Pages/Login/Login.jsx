@@ -1,15 +1,16 @@
 import {useRef, useState} from 'react';
-import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
 import { Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
-import { BsArrowRight } from "react-icons/bs";
 import { HiOutlineCheck } from "react-icons/hi";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 // Import Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAsync } from '../../Redux/Features/userSlice';
+
+// Components
+import Button from '../../Components/Button/Button';
 
 function Login(props) {
 
@@ -26,7 +27,7 @@ function Login(props) {
   return (
     <>
     {console.log(userReducer)}
-    {userReducer? null : <Toaster />}
+    <Toaster />
       <div className='flex gap-7 px-24'>
         <div className='flex-1'>
           <div>
@@ -55,11 +56,7 @@ function Login(props) {
             </div>
           </div>
           <div className='py-7'>
-            <button onClick={() => dispatch(loginAsync(_usernameOrEmail.current.value, _password.current.value))}  className='flex items-center gap-3 border border-gray-900'>
-                <div className='flex gap-3 items-center bg-gray-900 text-white px-7 py-3 relative top-[-3px] left-[-3px]'>
-                    LOGIN <BsArrowRight />
-                </div>
-            </button>
+            <Button onEvent={() => dispatch(loginAsync(_usernameOrEmail.current.value, _password.current.value))} borderColor='border-gray-900' backgroundColor='bg-gray-900' value='LOGIN' />
           </div>
         </div>
         <div className='flex-1'>
@@ -78,11 +75,7 @@ function Login(props) {
               </ul>
             </p>
             <div className='py-7'>
-                <button  className='flex items-center gap-3 border border-gray-900'>
-                    <div className='flex gap-3 items-center bg-gray-900 text-white px-7 py-3 relative top-[-3px] left-[-3px]'>
-                        REGISTRASI <BsArrowRight />
-                    </div>
-                </button>
+                <Button borderColor='border-gray-900' backgroundColor='bg-gray-900' value='REGISTRASI' />
             </div>
           </div>
         </div>

@@ -36,25 +36,21 @@
   "products": [
     {
       "id": 1,
-      "name": "Sepatu ...",
-      "price": 0,
-      "size": [
-        40,
-        41,
-        42,
-        43,
-        44,
-        45
-      ],
-      "stock": 100,
-      "color": "Black/White/Beige",
+      "name": "SEPATU SAMBA OG",
+      "price": 1000000,
       "discount": 10,
-      "images": [
-        "Url1",
-        "Url2",
-        "Url3"
+      "type": [
+        {
+          "size": [40, 41, 42],
+          "stock": 100,
+          "color": "",
+          "images": {
+            "main_images": "",
+            "detail_images": ["", "", ""]
+          }
+        }
       ],
-      "category_id": 3
+      "category_id": 1
     }
   ]
 }
