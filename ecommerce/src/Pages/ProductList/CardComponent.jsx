@@ -1,4 +1,5 @@
 import { VscHeart } from 'react-icons/vsc';
+import { Link } from 'react-router-dom';
 
 export default function ProductCard(props) {
 	return (
@@ -8,9 +9,11 @@ export default function ProductCard(props) {
 					<div className='product-card-wrapper'>
 						<a href='#' className='product-card-content'>
 							<div className='top-container relative'>
-								<div className='product-picture'>
-									<img src={`${props.data?.type[0]?.images?.main_images}`} alt=''></img>
-								</div>
+								<Link to={`/detail/${props.data.id}`}>
+									<div className='product-picture'>
+										<img src={`${props.data?.type[0]?.images?.main_images}`} alt=''></img>
+									</div>
+								</Link>
 								<div className='wishlist absolute top-4 right-4'>
 									<button className='wishlist-button'>
 										<VscHeart className='text-xl' />
