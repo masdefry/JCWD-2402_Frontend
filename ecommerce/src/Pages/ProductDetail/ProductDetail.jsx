@@ -18,6 +18,7 @@ export default function ProductDetail() {
 	const {id} = useParams()
 
 	const [data, setData] = useState(null)
+	const [selectedType, setSelectedType] = useState(0)
 
 	const onGetData = async() => {
 		try {
@@ -33,7 +34,7 @@ export default function ProductDetail() {
 	}, [])
 
 	return (
-		<div className='product-page-container mt-[89px]'>
+		<div className='product-page-container'>
 			<div className='product-page-wrapper flex'>
 				<section className='left-section flex-3 border-r-2 w-[70%]'>
 					<div className='galeri-full'>
@@ -41,7 +42,7 @@ export default function ProductDetail() {
 							<div>
 								<img
 									className='h-[600px] w-full object-contain'
-									src={'https://www.adidas.co.id/media/catalog/product/cache/b4d35d4f8c43032a04e969b4c3a6af8a/h/q/hq6709_2_footwear_photography_side20lateral20view_grey.jpg'}
+									src={data?.type[selectedType]?.images?.main_images}
 									alt='shoes'
 								/>
 							</div>
@@ -58,6 +59,7 @@ export default function ProductDetail() {
 														src={value?.images?.main_images}
 														alt='shoes'
 														className='w-[60px] cursor-pointer'
+														onClick={() => setSelectedType(index)}
 													/>
 												)
 											})
@@ -200,10 +202,10 @@ export default function ProductDetail() {
 						<h1 className='text-[35px] italic mb-[20px]'>{data?.name}</h1>
 						<div className='product-description-color-price'>
 							<h5 className='product-description-color-label text-[12px] mb-[20px]'>
-								{data?.type[0]?.color}
+								{data?.type[selectedType]?.color}
 							</h5>
 							<div className='product-description-price-label font-bold'>
-								Rp. {data?.price?.toLocaleString('id-ID')}
+								Rp. {(data?.type[selectedType]?.discount)? `${(data?.price - (data?.price * data.type[selectedType]?.discount / 100)).toLocaleString()}`	: data?.price.toLocaleString()}
 							</div>
 						</div>
 					</div>
@@ -215,7 +217,7 @@ export default function ProductDetail() {
 							{/* <SizeDropDown /> */}
 						</div>
 						<div className='text-[14px] text-red-600 font-bold mt-[10px]'>
-							{data?.type[0]?.stock} Item
+							{data?.type[selectedType]?.stock} Item
 						</div>
 						<div className='size-chart'>
 							<div className='size-guide flex items-end gap-1 mt-[10px]'>
