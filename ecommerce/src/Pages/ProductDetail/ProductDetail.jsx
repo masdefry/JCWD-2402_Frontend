@@ -27,7 +27,7 @@ export default function ProductDetail() {
 
 	const onGetData = async() => {
 		try {
-			const response = await axios.get(`${UrlAPI}/products/${id}`)
+			const response = await axios.get(`${UrlAPI}/products/${id}?_embed=types`)
 			setData(response.data)
 		} catch (error) {
 			
@@ -47,18 +47,18 @@ export default function ProductDetail() {
 							<div>
 								<img
 									className='h-[600px] w-full object-contain'
-									src={data?.type[selectedType]?.images?.main_images}
+									src={data?.types[selectedType]?.images?.main_images}
 									alt='shoes'
 								/>
 							</div>
 							<div className='product-color-image-container py-4 border-b-2'>
 								<div className='product-color-image-wrapper flex gap-6 justify-center items-center'>
 									<div className='text-[11px] font-semibold text-center'>
-										{data?.type?.length} WARNA<br></br>TERSEDIA
+										{data?.types?.length} WARNA<br></br>TERSEDIA
 									</div>
 									<div className='product-color-image flex gap-3'>
 										{
-											data?.type?.map((value, index) => {
+											data?.types?.map((value, index) => {
 												return(
 													<img
 														src={value?.images?.main_images}
@@ -207,10 +207,10 @@ export default function ProductDetail() {
 						<h1 className='text-[35px] italic mb-[20px]'>{data?.name}</h1>
 						<div className='product-description-color-price'>
 							<h5 className='product-description-color-label text-[12px] mb-[20px]'>
-								{data?.type[selectedType]?.color}
+								{data?.types[selectedType]?.color}
 							</h5>
 							<div className='product-description-price-label font-bold'>
-								Rp. {(data?.type[selectedType]?.discount)? `${(data?.price - (data?.price * data.type[selectedType]?.discount / 100)).toLocaleString()}`	: data?.price.toLocaleString()}
+								Rp. {(data?.types[selectedType]?.discount)? `${(data?.price - (data?.price * data.types[selectedType]?.discount / 100)).toLocaleString()}`	: data?.price.toLocaleString()}
 							</div>
 						</div>
 					</div>
@@ -222,7 +222,7 @@ export default function ProductDetail() {
 							<SizeDropdown />
 						</div>
 						<div className='text-[14px] text-red-600 font-bold mt-[10px]'>
-							{data?.type[selectedType]?.stock} Item Available
+							{data?.types[selectedType]?.stock} Item Available
 						</div>
 						<div className='size-chart'>
 							<div className='size-guide flex items-end gap-1 mt-[10px]'>

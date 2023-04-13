@@ -24,7 +24,7 @@ export default function ProductList() {
 
 	const onGetData = async() => {
 		try {
-			const response = await axios.get(`${UrlAPI}/products?_expand=category`)
+			const response = await axios.get(`${UrlAPI}/products?_embed=types&_expand=category`)
 			console.log(response.data)
 			setData(response.data)
 		} catch (error) {

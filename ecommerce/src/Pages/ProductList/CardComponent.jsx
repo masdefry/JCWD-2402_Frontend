@@ -11,7 +11,7 @@ export default function ProductCard(props) {
 							<div className='top-container relative'>
 								<Link to={`/detail/${props.data.id}`}>
 									<div className='product-picture'>
-										<img src={`${props.data?.type[0]?.images?.main_images}`} alt=''></img>
+										<img src={`${props.data?.types[0]?.images?.main_images}`} alt=''></img>
 									</div>
 								</Link>
 								<div className='wishlist absolute top-4 right-4'>
@@ -36,7 +36,7 @@ export default function ProductCard(props) {
 									</div>
 								</div>
 								<div className='product-details-bottom text-xs text-gray-500 mt-6'>
-									<div className='colors'>{props.data.type.length} warna</div>
+									<div className='colors'>{props.data.types.length} warna</div>
 								</div>
 							</div>
 						</a>
