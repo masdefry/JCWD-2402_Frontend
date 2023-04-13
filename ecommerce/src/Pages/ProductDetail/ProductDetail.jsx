@@ -18,12 +18,13 @@ import SizeDropdown from '../../Components/SizeDropdown/SizeDropdown';
 
 export default function ProductDetail() {
 
-	const userReducer = useSelector((state) => state.user.username)
+	const userReducer = useSelector((state) => state.user)
 
 	const {id} = useParams()
 
 	const [data, setData] = useState(null)
 	const [selectedType, setSelectedType] = useState(0)
+	const [selectedSize, setSelectedSize] = useState(0)
 
 	const onGetData = async() => {
 		try {
@@ -31,6 +32,25 @@ export default function ProductDetail() {
 			setData(response.data)
 		} catch (error) {
 			
+		}
+	}
+
+	const onSetSelectedType = (_index) => {
+		setSelectedType(_index)
+		setSelectedSize(0)
+	}
+
+	const onSelectedSize = (_size) => {
+		setSelectedSize(_size)
+	}
+
+	const onAddToCart = async() => {
+		try {
+			
+			let response = await axios.post(`http://localhost:5000/carts`, {userId: userReducer.id, productId: Number(id), typeId: data.types[selectedType].id, size: selectedSize, quantity: 1})
+			console.log(response)
+		} catch (error) {
+			console.log(error)
 		}
 	}
 
@@ -64,7 +84,7 @@ export default function ProductDetail() {
 														src={value?.images?.main_images}
 														alt='shoes'
 														className='w-[60px] cursor-pointer'
-														onClick={() => setSelectedType(index)}
+														onClick={() => onSetSelectedType(index)}
 													/>
 												)
 											})
@@ -219,7 +239,7 @@ export default function ProductDetail() {
 							PILIH SIZE
 						</h5>
 						<div className='dropdown-size mt-[10px]'>
-							<SizeDropdown />
+							<SizeDropdown funct={onSelectedSize} size={data?.types[selectedType]?.size} />
 						</div>
 						<div className='text-[14px] text-red-600 font-bold mt-[10px]'>
 							{data?.types[selectedType]?.stock} Item Available
@@ -248,8 +268,9 @@ export default function ProductDetail() {
 					<div className='flex gap-4 mt-[20px]'>
 						<div className='send-button'>
 							{
-								userReducer?
+								userReducer.id?
 									<Button
+										onEvent={onAddToCart}
 										borderColor='border-gray-900'
 										backgroundColor='bg-gray-900'
 										value='TAMBAH KE KERANJANG'

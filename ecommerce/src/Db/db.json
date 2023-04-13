@@ -10,7 +10,6 @@
       "id": 1
     }
   ],
-
   "categories": [
     {
       "id": 1,
@@ -25,7 +24,6 @@
       "category": "Accessories"
     }
   ],
-
   "products": [
     {
       "id": 1,
@@ -40,7 +38,6 @@
       "categoryId": 1
     }
   ],
-
   "types": [
     {
       "id": 1,
@@ -74,7 +71,7 @@
       }
     },
     {
-      "id": 2, 
+      "id": 2,
       "productId": 1,
       "discount": 0,
       "size": [
@@ -104,8 +101,8 @@
       }
     },
     {
-      "id": 3, 
-      "productId": 2, 
+      "id": 3,
+      "productId": 2,
       "discount": 35,
       "size": [
         5,
@@ -124,8 +121,14 @@
       }
     }
   ],
-
   "carts": [
-    
+    {
+      "userId": 1,
+      "productId": 1,
+      "typeId": 1,
+      "size": 13,
+      "quantity": 1,
+      "id": 1
+    }
   ]
 }

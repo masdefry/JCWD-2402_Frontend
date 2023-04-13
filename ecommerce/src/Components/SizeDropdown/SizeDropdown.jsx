@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 import { useState } from 'react';
 
-export default function SizeDropdown() {
+export default function SizeDropdown(props) {
 	const [sizeChart, setSizeChart] = useState('hidden');
 
 	const onAllHide = () => {
@@ -49,9 +49,13 @@ export default function SizeDropdown() {
 					className='py-2 text-sm text-gray-700 dark:text-gray-200'
 					aria-labelledby='dropdownDefaultButton'
 				>
-					<li className='border-[1px] py-1 text-center'>40</li>
-					<li className='border-[1px] py-1 text-center'>41</li>
-					<li className='border-[1px] py-1 text-center'>43</li>
+					{
+						props?.size?.map((value, index) => {
+							return(
+								<li key={index} onClick={props.funct(value)} className='border-[1px] py-1 text-center'>{value}</li>
+							)
+						})
+					}
 				</ul>
 			</div>
 		</div>

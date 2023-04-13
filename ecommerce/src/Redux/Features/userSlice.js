@@ -4,6 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const initialState = {
+    id: null,
     username: ''
 }
 
@@ -12,7 +13,8 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUsername: (initialState, action) => {
-            initialState.username = action.payload
+            initialState.id = action.payload.id
+            initialState.username = action.payload.username
         }
     }
 })
@@ -32,7 +34,7 @@ export const loginAsync = (_usernameOrEmail, _password) => async(dispatch) => {
         localStorage.setItem('id', response.data[0].id)
 
         setTimeout(() => {
-            dispatch(setUsername(response.data[0].username))
+            dispatch(setUsername(response.data[0]))
         }, 3000)
     } catch (error) {
         toast.error(error.message)
@@ -45,7 +47,7 @@ export const keepLoginAsync = () => async(dispatch) => {
 
         if(id){
             let response = await axios.get(`http://localhost:5000/users/${id}`)
-            dispatch(setUsername(response.data.username))
+            dispatch(setUsername(response.data))
         }
         
     } catch (error) {
