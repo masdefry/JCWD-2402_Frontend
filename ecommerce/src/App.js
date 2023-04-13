@@ -8,6 +8,7 @@ import Login from './Pages/Login/Login';
 import Home from './Pages/Home/Home';
 import ProductList from './Pages/ProductList/ProductList';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
+import Cart from './Pages/Cart/Cart';
 
 // Import Redux
 import { keepLoginAsync } from './Redux/Features/userSlice';
@@ -32,6 +33,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/products' element={<ProductList />} />
         <Route path='/detail/:id' element={<ProductDetail />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
     </>
   );

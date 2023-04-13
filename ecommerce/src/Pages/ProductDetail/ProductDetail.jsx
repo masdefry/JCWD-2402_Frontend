@@ -7,13 +7,18 @@ import { VscHeart } from 'react-icons/vsc';
 import { TbTruckDelivery } from 'react-icons/tb';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { AiOutlineCheck } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
+
+import axios from 'axios';
+import UrlAPI from './../../Supports/Constants/URLAPI';
 
 // Components
 import Button from '../../Components/Button/Button';
-import UrlAPI from './../../Supports/Constants/URLAPI';
-import axios from 'axios';
+import SizeDropdown from '../../Components/SizeDropdown/SizeDropdown';
 
 export default function ProductDetail() {
+
+	const userReducer = useSelector((state) => state.user.username)
 
 	const {id} = useParams()
 
@@ -214,10 +219,10 @@ export default function ProductDetail() {
 							PILIH SIZE
 						</h5>
 						<div className='dropdown-size mt-[10px]'>
-							{/* <SizeDropDown /> */}
+							<SizeDropdown />
 						</div>
 						<div className='text-[14px] text-red-600 font-bold mt-[10px]'>
-							{data?.type[selectedType]?.stock} Item
+							{data?.type[selectedType]?.stock} Item Available
 						</div>
 						<div className='size-chart'>
 							<div className='size-guide flex items-end gap-1 mt-[10px]'>
@@ -242,11 +247,20 @@ export default function ProductDetail() {
 					</div>
 					<div className='flex gap-4 mt-[20px]'>
 						<div className='send-button'>
-							<Button
-								borderColor='border-gray-900'
-								backgroundColor='bg-gray-900'
-								value='TAMBAH KE KERANJANG'
-							/>
+							{
+								userReducer?
+									<Button
+										borderColor='border-gray-900'
+										backgroundColor='bg-gray-900'
+										value='TAMBAH KE KERANJANG'
+									/>
+								:
+									<Button
+										borderColor='border-red-400'
+										backgroundColor='bg-red-400'
+										value='MASUK/DAFTAR DULU!'
+									/>
+							}
 						</div>
 						<button
 							type='button'

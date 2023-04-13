@@ -3,6 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { SlBag } from "react-icons/sl";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
   const userReducer = useSelector((state) => state.user.username)
@@ -32,11 +33,15 @@ function Navbar(props) {
       </div>
       <div className='flex justify-between py-3'>
         <div className='flex-1 relative top-[-20px]'>
-          Logo 
+          <Link to='/'>
+           Logo 
+          </Link>
         </div>
         <div className='flex flex-1 justify-center items-center gap-6 text-[14px]'>
           <div>
-            PRIA
+            <Link to='/products'>
+              PRIA
+            </Link>
           </div>
           <div>
             WANITA
@@ -56,7 +61,9 @@ function Navbar(props) {
             </div>
           </div>
           <div>
+            <Link to='/cart'>
             <SlBag className='text-lg' />
+            </Link>
           </div>
         </div>
       </div>
