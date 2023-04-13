@@ -8,6 +8,7 @@ import { TbTruckDelivery } from 'react-icons/tb';
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import toast, {Toaster} from 'react-hot-toast';
 
 import axios from 'axios';
 import UrlAPI from './../../Supports/Constants/URLAPI';
@@ -41,14 +42,23 @@ export default function ProductDetail() {
 	}
 
 	const onSelectedSize = (_size) => {
+		console.log(_size)
 		setSelectedSize(_size)
 	}
 
 	const onAddToCart = async() => {
 		try {
-			
-			let response = await axios.post(`http://localhost:5000/carts`, {userId: userReducer.id, productId: Number(id), typeId: data.types[selectedType].id, size: selectedSize, quantity: 1})
-			console.log(response)
+
+			const findCart = await axios.get(`http://localhost:5000/carts?userId=${userReducer.id}&productId=${Number(id)}&typeId=${data.types[selectedType].id}&size=${selectedSize}`)
+			console.log(findCart)
+			if(findCart.data.length){
+				// Update Quantity
+				await axios.patch(`http://localhost:5000/carts/${findCart.data[0].id}`, {quantity: findCart.data[0].quantity+1})
+			}else{
+				let response = await axios.post(`http://localhost:5000/carts`, {userId: userReducer.id, productId: Number(id), typeId: data.types[selectedType].id, size: selectedSize, quantity: 1})
+			}
+
+			toast.success('Add to cart success!')
 		} catch (error) {
 			console.log(error)
 		}
@@ -60,6 +70,7 @@ export default function ProductDetail() {
 
 	return (
 		<div className='product-page-container'>
+			<Toaster />
 			<div className='product-page-wrapper flex'>
 				<section className='left-section flex-3 border-r-2 w-[70%]'>
 					<div className='galeri-full'>
