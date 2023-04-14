@@ -9,6 +9,8 @@ import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 import toast, {Toaster} from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { getCartAsync } from '../../Redux/Features/transactionSlice';
 
 import axios from 'axios';
 import UrlAPI from './../../Supports/Constants/URLAPI';
@@ -18,7 +20,7 @@ import Button from '../../Components/Button/Button';
 import SizeDropdown from '../../Components/SizeDropdown/SizeDropdown';
 
 export default function ProductDetail() {
-
+	const dispatch = useDispatch()
 	const userReducer = useSelector((state) => state.user)
 
 	const {id} = useParams()
@@ -57,6 +59,8 @@ export default function ProductDetail() {
 			}else{
 				let response = await axios.post(`http://localhost:5000/carts`, {userId: userReducer.id, productId: Number(id), typeId: data.types[selectedType].id, size: selectedSize, quantity: 1})
 			}
+
+			dispatch(getCartAsync())
 
 			toast.success('Add to cart success!')
 		} catch (error) {

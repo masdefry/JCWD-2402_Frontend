@@ -8,6 +8,15 @@
       "email": "mdefryan@gmail.com",
       "password": "Abc123",
       "id": 1
+    },
+    {
+      "firstName": "M",
+      "lastName": "Defryan",
+      "birthdate": "2010-10-10",
+      "username": "ryandefryan",
+      "email": "ryan.fandy@gmail.com",
+      "password": "Abc123",
+      "id": 2
     }
   ],
   "categories": [
@@ -127,7 +136,7 @@
       "productId": 1,
       "typeId": 1,
       "size": 12.5,
-      "quantity": 3,
+      "quantity": 4,
       "id": 1
     },
     {
@@ -135,7 +144,7 @@
       "productId": 1,
       "typeId": 1,
       "size": 13,
-      "quantity": 2,
+      "quantity": 4,
       "id": 2
     },
     {
@@ -145,6 +154,30 @@
       "size": 13,
       "quantity": 1,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "productId": 2,
+      "typeId": 3,
+      "size": 0,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "productId": 1,
+      "typeId": 1,
+      "size": 0,
+      "quantity": 1,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "productId": 2,
+      "typeId": 3,
+      "size": 10,
+      "quantity": 1,
+      "id": 6
     }
   ]
 }

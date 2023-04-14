@@ -14,6 +14,7 @@ import Cart from './Pages/Cart/Cart';
 import { keepLoginAsync } from './Redux/Features/userSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { getCartAsync } from './Redux/Features/transactionSlice';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 
   useEffect(() => {
     dispatch(keepLoginAsync())
+    dispatch(getCartAsync())
   }, [])
 
   return (

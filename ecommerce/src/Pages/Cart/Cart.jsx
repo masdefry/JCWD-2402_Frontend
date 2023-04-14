@@ -1,6 +1,19 @@
+import { useEffect } from "react";
 import Button from "../../Components/Button/Button";
+import Card from "./Card";
+
+import { useSelector, useDispatch } from "react-redux";
+import { getCartAsync } from "../../Redux/Features/transactionSlice";
 
 export default function Cart(){
+
+    const dispatch = useDispatch()
+    const cartReducer = useSelector((state) => state.transaction.cart)
+
+    useEffect(() => {
+        dispatch(getCartAsync())
+    }, [])
+
     return(
         <div className='flex gap-3 px-[100px] py-[50px]'>
             <div className='flex-2'>
@@ -17,47 +30,17 @@ export default function Cart(){
                         Lanjutkan Belanja
                     </div>
                 </div>
-                <div className='flex mt-10 border-t-[0.3px]'>
-                    <div className='flex gap-10 px-3 py-3'>
-                        <img src={'https://www.adidas.co.id/media/catalog/product/cache/3bec5fdb79d91223b1a151be2b21ce8d/b/7/b75806_sl_ecom.jpg'} 
-                            className='w-[150px] h-[150px]'
-                        />
-                        <div>   
-                            <div className='flex flex-col'>
-                                <div className='flex flex-col gap-1'>
-                                    <h1 className='font-bold'>
-                                        SEPATU SAMBA OG
-                                    </h1>
-                                    <h6 className='text-sm'>
-                                        Category: Shoes
-                                    </h6>
-                                    <h6 className='text-sm'>
-                                        Color: Blue/Army/Black
-                                    </h6>
-                                    <h6 className='text-sm'>
-                                        Size: 12.5
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex items-center'>
-                            <button className='bg-gray-900 w-[30px] h-[30px] pb-1 text-white'>
-                                -
-                            </button>
-                                <span className='px-3'>
-                                    1
-                                </span>
-                            <button className='bg-gray-900 w-[30px] h-[30px] pb-1 text-white'>
-                                +
-                            </button>
-                        </div>
-                        <div className='flex justify-end items-center'>
-                            <h6>
-                                Rp.xxx.xxx.xxx
-                            </h6>
-                        </div>
+                {
+                    cartReducer.length?
+                        
+                    
+                    
+                    <Card data={cartReducer?cartReducer:[]} />
+                    :
+                    <div>
+                        Oppsie!
                     </div>
-                </div>
+                }
             </div>
             <div className='flex-1 pl-5'>
                 <div className='bg-gray-100 px-5 py-5'>

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { getCartAsync } from "./transactionSlice";
 
 const initialState = {
     id: null,
@@ -32,6 +33,8 @@ export const loginAsync = (_usernameOrEmail, _password) => async(dispatch) => {
         toast.success('Login Success!')
         
         localStorage.setItem('id', response.data[0].id)
+        
+        dispatch(getCartAsync())
 
         setTimeout(() => {
             dispatch(setUsername(response.data[0]))
@@ -49,6 +52,16 @@ export const keepLoginAsync = () => async(dispatch) => {
             let response = await axios.get(`http://localhost:5000/users/${id}`)
             dispatch(setUsername(response.data))
         }
+        
+    } catch (error) {
+        
+    }
+}
+
+export const logoutAsync = () => async(dispatch) => {
+    try {
+        let id = localStorage.removeItem('id')
+        dispatch(setUsername({id: null, username: ''}))
         
     } catch (error) {
         

@@ -2,11 +2,14 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { SlBag } from "react-icons/sl";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutAsync } from "../../Redux/Features/userSlice";
 
 function Navbar(props) {
+  const dispatch = useDispatch()
   const userReducer = useSelector((state) => state.user.username)
+  const transactionReducer = useSelector((state) => state.transaction.totalCart)
   return (
     // Section1: Navbar
     <div className='px-10 border-b'>
@@ -23,11 +26,13 @@ function Navbar(props) {
         <div>
           {
             userReducer?
-              <h1 className='font-bold'>
+              <h1 className='font-bold' onClick={() => dispatch(logoutAsync())}>
                 Hi, {userReducer}
               </h1>
             :
-              'masuk'
+              <Link to='/login'>
+                masuk
+              </Link>
           }
         </div>
       </div>
@@ -60,9 +65,12 @@ function Navbar(props) {
               <AiOutlineSearch />
             </div>
           </div>
-          <div>
+          <div className='relative'>
             <Link to='/cart'>
-            <SlBag className='text-lg' />
+              <SlBag className='text-lg' />
+              <div className='bg-blue-400 rounded-full w-[20px] h-[20px] text-center absolute bottom-[10px] left-[15px]'>
+                {transactionReducer? transactionReducer:null}
+              </div>
             </Link>
           </div>
         </div>
